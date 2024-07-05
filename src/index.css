@@ -20,3 +20,11 @@ code {
   background: rgb(23, 23, 23);
   background: linear-gradient(180deg, rgba(23, 23, 23, 1) 2%, rgba(5, 5, 47, 1) 54%, rgb(12, 7, 36) 78%, rgb(12, 2, 43) 98%);
 }
+
+.bg-box{
+  /* background-color: rgb(58, 58, 58); */
+  background: rgba(20, 20, 20, 1)
+}
+.mainDivWidth{
+  width: calc(100vw - 2rem);
+}

@@ -1,7 +1,7 @@
 .card {
     position: relative;
     width: 60%;
-    height: 40%;
+    height: 100%;
     border-radius: 14px;
     z-index: 1111;
     overflow: hidden;
@@ -18,7 +18,7 @@
     width: calc(100% - 4px);
     height: 100%;
     z-index: 2;
-    background: rgba(20, 20, 20, 0.95);
+    background: rgba(20, 20, 20, 1);
     /* backdrop-filter: blur(24px); */
     border-radius: 10px;
     overflow: hidden;
@@ -48,11 +48,12 @@
     30% {
         transform: translate(-100%, -100%) translate3d(100%, 0, 0);
     }
-/* 
+
+    /* 
     50% {
         transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
     } */
-/* 
+    /* 
     75% {
         transform: translate(-100%, -100%) translate3d(0, 100%, 0);
     } */
@@ -182,4 +183,31 @@
     border: solid white;
     border-width: 0 0.15em 0.15em 0;
     transform: rotate(45deg);
+}
+
+/* global.css */
+.scrollBarAdjustment {
+    height: 300px;
+    overflow-y: scroll;
+}
+/* .scrollBarAdjustment::-webkit-scrollbar-track{
+     background-color: #58bc82;
+} */
+.scrollBarAdjustment::-webkit-scrollbar{
+    width: 5px;
+    scrollbar-width: 12px;
+}
+
+
+.scrollBarAdjustment::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 6px;
+}
+
+.scrollBarAdjustment::-webkit-scrollbar-thumb:hover{
+    background: #555;
+}
+
+.scrollBarAdjustment::-webkit-scrollbar-corner{
+    background: #f1f1f1;
 }

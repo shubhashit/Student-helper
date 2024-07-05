@@ -10,7 +10,7 @@ import Landingpage from './components/Landingpage';
 
 function App() {
   return (
-    <div className="App bg-black">
+    <div className="App bg-black h-fit">
       <Router>
         <Routes>
           <Route exact path="/signin" element={<Signin></Signin>} />
