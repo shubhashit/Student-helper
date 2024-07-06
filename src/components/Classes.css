@@ -3,7 +3,7 @@
     flex-direction: column;
     isolation: isolate;
     position: relative;
-    width: 100%;
+    /* width: 90%; */
     height: 5rem;
     background: #29292c;
     border-radius: 1rem;

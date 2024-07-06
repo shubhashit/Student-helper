@@ -7,6 +7,7 @@ import {
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Landingpage from './components/Landingpage';
+import Chat from './components/Chat';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/signin" element={<Signin></Signin>} />
           {/* <Route exact path="/signup" element={<Signup></Signup>} /> */}
           <Route exact path="/" element={<Landingpage></Landingpage>} />
+          <Route exact path="/chat" element={<Chat></Chat>} />
         </Routes>
       </Router>
     </div>
