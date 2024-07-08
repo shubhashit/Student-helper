@@ -19,7 +19,8 @@
 }
 
 .form input[type="email"],
-.form input[type="password"] {
+.form input[type="password"],
+.form input[type="text"] {
     border-radius: 0.5rem;
     padding: 0.75rem 0.75rem;
     width: 100%;

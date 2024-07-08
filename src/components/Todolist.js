@@ -26,7 +26,7 @@ export default function Todolist() {
 
                             <div>Some task to be done by the end of the day</div>
                         </div>
-                        <i className="fa-solid fa-trash max-md:mt-2"></i>
+                        <i className="fa-solid fa-trash max-md:mt-2 cursor-pointer"></i>
                     </div>
 
 
