@@ -1,53 +1,58 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "../components/Signin.css"
 import { useNavigate } from 'react-router-dom'
+import { auth, db } from '../FIrebase/Firebase'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { doc, setDoc } from 'firebase/firestore'
+import { useUser } from '../Contextapi/UserContext'
 
 export default function Signup() {
+    const {setUser} = useUser();
     const navigate = useNavigate()
-    const [userinfo , setUserinfo] = useState({
-        "username" : "",
-        "email" : "",
-        "password" : ""
-    })
-    function toSignin(){
+
+    function toSignin() {
         navigate('/signin')
     }
-    const signUp = (e)=>{
+
+    const signUp = async (e) => {
         e.preventDefault();
-        console.log(e.target[0].value)
-        console.log(e.target[1].value)
-        console.log(e.target[2].value)
-        console.log(userinfo)
+        let username = e.target[0].value;
+        let email = e.target[1].value;
+        let password = e.target[2].value;
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            const user = userCredential.user
+            console.log(user)
+            setUser({username  , email})
+
+            await setDoc(doc(db , "todo" , user.uid) , {}); 
+            navigate('/')
+        } catch (error) {
+            console.log(error);
+        }
     }
-    function handleChange(e){
-        const { name, value } = e.target;
-        console.log(name , value)
-        setUserinfo((prevData) => ({
-            ...prevData,
-            [name]: value
-        }));
-    }
+
     return (
         <div className='h-[100vh] w-[100-vw] flex items-center justify-center'>
             <form className="form border-white" onSubmit={signUp}>
                 <span className="input-span">
                     <label htmlFor="username" className="label">Username</label>
-                    <input type="text" name="username" id="username" onChange={handleChange}
+                    <input type="text" name="username" id="username"
                     />
                 </span>
                 <span className="input-span">
                     <label htmlFor="email" className="label">Email</label>
-                    <input type="email" name="email" id="email" onChange={handleChange}
+                    <input type="email" name="email" id="email"
                     />
                 </span>
-                <span className="input-span">
+                <span className="input-span mb-3">
                     <label htmlFor="password" className="label">Password</label>
-                    <input type="password" name="password" id="password" onChange={handleChange}
+                    <input type="password" name="password" id="password"
                     />
                 </span>
-                <span className="span"><a href="#">Forgot password?</a></span>
+                {/* <span className="span"><a href="#">Forgot password?</a></span> */}
                 <input className="submit text-center" type="submit" value="Log in" />
-                <span className="span flex flex-row">Already have an account? <div className='cursor-pointer ml-3' onClick={toSignin}>Sign in</div></span>
+                <span className="span flex flex-row">Already have an account? <div className='cursor-pointer ml-3 text-[#58bc82]' onClick={toSignin}>Sign in</div></span>
             </form>
 
         </div>

@@ -1,27 +1,45 @@
 import React from 'react'
 import '../components/Signin.css'
 import { useNavigate } from 'react-router-dom'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth, db } from '../FIrebase/Firebase'
+import { setDoc } from 'firebase/firestore'
 
 export default function Signin() {
   const navigate = useNavigate()
   function toSignup() {
     navigate('/signup')
-  } 
+  }
+
+  const signIn = async (e)=>{
+    e.preventDefault();
+    let email = e.target[0].value;
+    let password = e.target[1].value;
+    console.log(email , password)
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth , email , password)
+      const user = userCredential.user
+      console.log(user)
+      navigate('/')
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div className='h-[100vh] w-[100-vw] flex items-center justify-center'>
-          <form className="form "> {/* border-2 border-white p-4 rounded-md */}
-              <span className="input-span">
-                  <label htmlFor="email" className="label">Email</label>
-                  <input type="email" name="email" id="email"
-                  /></span>
-              <span className="input-span">
-                  <label htmlFor="password" className="label">Password</label>
-                  <input type="password" name="password" id="password"
-                  /></span>
-              <span className="span"><a href="#">Forgot password?</a></span>
-              <input className="submit text-center" type="submit" value="Log in" />
-              <span className="span">Don't have an account? <div className='cursor-pointer ' onClick={toSignup}>Sign up</div></span>
-          </form>
+      <form className="form " onSubmit={signIn}> {/* border-2 border-white p-4 rounded-md */}
+        <span className="input-span">
+          <label htmlFor="email" className="label">Email</label>
+          <input type="email" name="email" id="email"
+          /></span>
+        <span className="input-span mb-3">
+          <label htmlFor="password" className="label">Password</label>
+          <input type="password" name="password" id="password"
+          /></span>
+        {/* <span className="span"><a href="#">Forgot password?</a></span> */}
+        <input className="submit text-center" type="submit" value="Log in" />
+        <span className="span flex flex-row">Don't have an account? <div className='cursor-pointer ml-3 text-[#58bc82]' onClick={toSignup}>Sign up</div></span>
+      </form>
 
     </div>
   )

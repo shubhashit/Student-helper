@@ -8,8 +8,11 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Landingpage from './components/Landingpage';
 import Chat from './components/Chat';
+import { useUser } from './Contextapi/UserContext';
 
 function App() {
+  const {user , setUser} = useUser();
+  console.log(user);
   return (
     <div className="App bg-black h-fit">
       <Router>
