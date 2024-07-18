@@ -197,16 +197,17 @@
 .scrollBarAdjustment::-webkit-scrollbar{
     width: 5px;
     scrollbar-width: 12px;
+    /* background: ; */
 }
 
 
 .scrollBarAdjustment::-webkit-scrollbar-thumb{
-    background: #888;
+    background: #58bc82;
     border-radius: 6px;
 }
 
 .scrollBarAdjustment::-webkit-scrollbar-thumb:hover{
-    background: #555;
+    background: #58bc82;
 }
 
 .scrollBarAdjustment::-webkit-scrollbar-corner{

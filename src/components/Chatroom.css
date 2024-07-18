@@ -1,0 +1,19 @@
+.scrollBarAdjustmentChatroom::-webkit-scrollbar {
+    width: 5px;
+    scrollbar-width: 12px;
+    /* background: ; */
+}
+
+
+.scrollBarAdjustmentChatroom::-webkit-scrollbar-thumb {
+    background: #58bc82;
+    border-radius: 6px;
+}
+
+.scrollBarAdjustmentChatroom::-webkit-scrollbar-thumb:hover {
+    background: #58bc82;
+}
+
+.scrollBarAdjustmentChatroom::-webkit-scrollbar-corner {
+    background: #f1f1f1;
+}

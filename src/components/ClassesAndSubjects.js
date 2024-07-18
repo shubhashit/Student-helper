@@ -2,10 +2,11 @@ import React from 'react'
 import Classes from './Classes'
 import Subjects from './Subjects'
 
-export default function ClassesAndSubjects() {
+export default function ClassesAndSubjects(props) {
+  console.log(props.day)
   return (
     <div className='flex flex-row h-fit min-h-[40vh] rounded-2xl bg-black mt-4 mb-4 max-md:flex-col'>
-      <Classes></Classes>  
+      <Classes day={props.day}></Classes>  
       <Subjects></Subjects>
     </div>
   )

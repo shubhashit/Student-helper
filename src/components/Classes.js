@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "../components/Classes.css"
 import { TimeTable } from "../Schedule/Schedule.js"
 
-export default function Classes() {
-  const arr = TimeTable[0];
-  console.log(arr)
+export default function Classes(props) {
+  const [classes , setClasses] = useState([]);
+  useEffect(()=>{
+    setClasses(TimeTable[props.day])
+  },[])
   return (
     <div className='w-[60%] max-md:w-full h-full p-3 text-white text-lg'>
       <div className='font-bold text-xl'>Today's Classes :</div>
-      {arr.map((entry, index) => (
+      {classes && classes.map((entry, index) => (
         <div key={index} className='max-md:w-full'>
           <div className="notification relative mt-2 w-[90%] max-md:w-full">
             <div className="notiglow"></div>

@@ -28,3 +28,6 @@ code {
 .mainDivWidth{
   width: calc(100vw - 2rem);
 }
+.hchatroom{
+  height: calc(100vh - 6.5rem);
+}

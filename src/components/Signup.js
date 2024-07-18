@@ -24,8 +24,32 @@ export default function Signup() {
             const user = userCredential.user
             console.log(user)
             setUser({username  , email})
+            // call the api for the mongobd backend for saving the user and creating the todo list 
+            // await setDoc(doc(db , "todo" , user.uid) , {}); 
+            try {
+                let headersList = {
+                    "Accept": "*/*",
+                    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+                    "Content-Type": "application/json"
+                }
 
-            await setDoc(doc(db , "todo" , user.uid) , {}); 
+                let bodyContent = JSON.stringify({
+                    "name": username,
+                    "email": email
+                });
+
+                let response = await fetch("https://node-api-wjsa.onrender.com/user/createuser", {
+                    method: "POST",
+                    body: bodyContent,
+                    headers: headersList
+                });
+
+                let data = await response.json();
+                console.log(data);
+
+            } catch (error) {
+                
+            }
             navigate('/')
         } catch (error) {
             console.log(error);
