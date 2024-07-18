@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import "../components/Todolist.css"
+import { useUser } from '../Contextapi/UserContext';
 
 export default function Todolist(props) {
-    console.log(props.selectedDate)
+    const { user } = useUser();
+    console.log(user);
     const taskRef = useRef();
     const[todolist , setTodolist] = useState([]);
     const[refersh , setRefresh] = useState(false);
@@ -18,7 +20,7 @@ export default function Todolist(props) {
             }
 
             let bodyContent = JSON.stringify({
-                "email": "onlinetest@gmial.com",
+                "email": user.email,
                 "item": task,
                 "action": "add"
             });
@@ -50,7 +52,7 @@ export default function Todolist(props) {
             }
 
             let bodyContent = JSON.stringify({
-                "email": "onlinetest@gmial.com",
+                "email": user.email,
                 "item": task,
                 "action": "remove"
             });
@@ -81,7 +83,7 @@ export default function Todolist(props) {
                 }
 
                 let bodyContent = JSON.stringify({
-                    "email": "onlinetest@gmial.com"
+                    "email": user.email
                 });
 
                 let response = await fetch("https://node-api-wjsa.onrender.com/todo/getall", {

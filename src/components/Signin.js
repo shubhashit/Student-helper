@@ -2,10 +2,11 @@ import React from 'react'
 import '../components/Signin.css'
 import { useNavigate } from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth, db } from '../FIrebase/Firebase'
-import { setDoc } from 'firebase/firestore'
+import { auth } from '../FIrebase/Firebase'
+import { useUser } from '../Contextapi/UserContext'
 
 export default function Signin() {
+  const { setUser } = useUser(); 
   const navigate = useNavigate()
   function toSignup() {
     navigate('/signup')
@@ -19,6 +20,7 @@ export default function Signin() {
     try {
       const userCredential = await signInWithEmailAndPassword(auth , email , password)
       const user = userCredential.user
+      setUser({"email" : user.email , "username" : user.displayName})
       console.log(user)
       navigate('/')
     } catch (error) {

@@ -1,9 +1,8 @@
 import React from 'react'
 import "../components/Signin.css"
 import { useNavigate } from 'react-router-dom'
-import { auth, db } from '../FIrebase/Firebase'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
+import { auth } from '../FIrebase/Firebase'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { useUser } from '../Contextapi/UserContext'
 
 export default function Signup() {
@@ -20,8 +19,9 @@ export default function Signup() {
         let email = e.target[1].value;
         let password = e.target[2].value;
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-            const user = userCredential.user
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            await updateProfile(user , {displayName : username});
             console.log(user)
             setUser({username  , email})
             // call the api for the mongobd backend for saving the user and creating the todo list 
