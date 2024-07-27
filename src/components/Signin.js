@@ -6,21 +6,21 @@ import { auth } from '../FIrebase/Firebase'
 import { useUser } from '../Contextapi/UserContext'
 
 export default function Signin() {
-  const { setUser } = useUser();  
+  const { setUser } = useUser();
   const navigate = useNavigate()
   function toSignup() {
     navigate('/signup')
   }
 
-  const signIn = async (e)=>{
+  const signIn = async (e) => {
     e.preventDefault();
     let email = e.target[0].value;
     let password = e.target[1].value;
-    console.log(email , password)
+    console.log(email, password)
     try {
-      const userCredential = await signInWithEmailAndPassword(auth , email , password)
+      const userCredential = await signInWithEmailAndPassword(auth, email, password)
       const user = userCredential.user
-      setUser({"email" : user.email , "username" : user.displayName})
+      setUser({ "email": user.email, "username": user.displayName })
       console.log(user)
       navigate('/')
     } catch (error) {
@@ -33,12 +33,12 @@ export default function Signin() {
       <form className="form " onSubmit={signIn}> {/* border-2 border-white p-4 rounded-md */}
         <span className="input-span">
           <label htmlFor="email" className="label">Email</label>
-          <input type="email" readOnly={false} name="email" id="email" value={"test@gmail.com"}
-          /></span>
+          <input type="email" name="email" id="email" />
+        </span>
         <span className="input-span mb-3">
           <label htmlFor="password" className="label">Password</label>
-          <input type="password" name="password" id="password" value={"asefjil"}
-          /></span>
+          <input type="password" name="password" id="password" />
+        </span>
         {/* <span className="span"><a href="#">Forgot password?</a></span> */}
         <input className="submit text-center" type="submit" value="Log in" />
         <span className="span flex flex-row">Don't have an account? <div className='cursor-pointer ml-3 text-[#58bc82]' onClick={toSignup}>Sign up</div></span>
