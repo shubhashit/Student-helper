@@ -6,7 +6,7 @@ import { auth } from '../FIrebase/Firebase'
 import { useUser } from '../Contextapi/UserContext'
 
 export default function Signin() {
-  const { setUser } = useUser(); 
+  const { setUser } = useUser();  
   const navigate = useNavigate()
   function toSignup() {
     navigate('/signup')
@@ -24,6 +24,7 @@ export default function Signin() {
       console.log(user)
       navigate('/')
     } catch (error) {
+      alert(error.code)
       console.log(error);
     }
   }
@@ -32,11 +33,11 @@ export default function Signin() {
       <form className="form " onSubmit={signIn}> {/* border-2 border-white p-4 rounded-md */}
         <span className="input-span">
           <label htmlFor="email" className="label">Email</label>
-          <input type="email" name="email" id="email"
+          <input type="email" readOnly={false} name="email" id="email" value={"test@gmail.com"}
           /></span>
         <span className="input-span mb-3">
           <label htmlFor="password" className="label">Password</label>
-          <input type="password" name="password" id="password"
+          <input type="password" name="password" id="password" value={"asefjil"}
           /></span>
         {/* <span className="span"><a href="#">Forgot password?</a></span> */}
         <input className="submit text-center" type="submit" value="Log in" />

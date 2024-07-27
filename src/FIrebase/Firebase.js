@@ -5,6 +5,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -13,6 +15,7 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: "AIzaSyC4cvMH-aKVU4JOpGTonZ_pkcOTEItmHTQ",
     authDomain: "bike-rent-app-81995.firebaseapp.com",
+    databaseURL:"https://bike-rent-app-81995-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "bike-rent-app-81995",
     storageBucket: "bike-rent-app-81995.appspot.com",
     messagingSenderId: "1059981547267",
@@ -27,4 +30,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const storage = getStorage(app); 
 const db = getFirestore(app);
-export { app, auth, storage, db }
+const database = getDatabase(app);
+
+export { app, auth, storage, db , database}

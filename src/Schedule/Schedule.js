@@ -31,21 +31,21 @@ const TimeTable = [
     ],
     [
         {
-            "Period": "2",
+            "Period": "1",
             "Start_time": "10:00",
             "End_time": "10:55",
             "Subject": "EE-459",
             "Teacher": "RKN"
         },
         {
-            "Period": "3",
+            "Period": "2",
             "Start_time": "11:00",
             "End_time": "11:55",
             "Subject": "HUM-451",
             "Teacher": "N.A."
         },
         {
-            "Period": "4",
+            "Period": "3",
             "Start_time": "12:00",
             "End_time": "12:55",
             "Subject": "EE-454",
@@ -53,7 +53,7 @@ const TimeTable = [
         },
         ,
         {
-            "Period": "5",
+            "Period": "4",
             "Start_time": "2:00",
             "End_time": "3:55",
             "Subject": "Project-seminar",

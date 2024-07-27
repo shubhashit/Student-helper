@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/signin" element={ <Signin></Signin>} />
           <Route exact path="/signup" element={<Signup></Signup>} />
           <Route exact path="/" element={<ProtectedRoute><Landingpage></Landingpage> </ProtectedRoute>} />
-          <Route exact path="/chat" element={<Chat></Chat>} />
+          <Route exact path="/chat" element={<ProtectedRoute><Chat></Chat></ProtectedRoute>} />
         </Routes>
       </Router>
     </div>
