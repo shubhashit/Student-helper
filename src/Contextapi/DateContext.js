@@ -3,10 +3,10 @@ import React, { createContext, useState, useContext } from 'react';
 const DateContext = createContext();
 
 export const DateProvider = ({ children }) => {
-    const [currdate, setCurrdate] = useState(new Date());
+    const [currdate, setcurrdate] = useState(new Date());
 
-    const updateDate = (newdate) => {
-        setCurrdate(newdate);
+    const setCurrdate = (newdate) => {
+        setcurrdate(newdate);
     };
 
     return (

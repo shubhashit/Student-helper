@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../components/Calender.css';
+import { useDate } from '../Contextapi/DateContext'
+
 
 export default function Calendar() {
     const [currentDate, setCurrentDate] = useState(new Date());
-    const [selectedDate, setSelectedDate] = useState(null);
+    const { currdate, setCurrdate } = useDate(); 
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    console.log(currdate)
+    console.log(currentDate)
+
+    useEffect(()=>{
+        setCurrdate(selectedDate);
+    } , [selectedDate])
 
     const getDaysInMonth = (year, month) => {
         return new Date(year, month + 1, 0).getDate();
@@ -52,10 +61,12 @@ export default function Calendar() {
     };
 
     const handlePreviousMonth = () => {
+        setCurrdate(new Date(currentDate.setMonth(currentDate.getMonth() - 1)));
         setCurrentDate(new Date(currentDate.setMonth(currentDate.getMonth() - 1)));
     };
 
     const handleNextMonth = () => {
+        setCurrdate(new Date(currentDate.setMonth(currentDate.getMonth() + 1)));
         setCurrentDate(new Date(currentDate.setMonth(currentDate.getMonth() + 1)));
     };
 

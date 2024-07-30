@@ -37,6 +37,7 @@ export default function Chatroom() {
     let date = new Date()
     console.log(textref.current.value)
     let message = textref.current.value;
+    if(message == "") return ;
     try {
       console.log('here')
       const postData = {
@@ -60,7 +61,7 @@ export default function Chatroom() {
 
   }
   return (
-    <div className='hchatroom w-[42%] p-3 flex flex-col-reverse bg-black rounded-xl mt-4'>
+    <div className='hchatroom max-md:w-full w-[42%] p-3 flex flex-col-reverse bg-black rounded-xl mt-4'>
 
       <div className='w-full bg-[#18181b] text-white p-1 flex flex-row justify-between items-center'>
         <input ref={textref} className='outline-none  bg-[#18181b] ml-3 w-[75%]' type="text" placeholder='Type here....' />
@@ -84,10 +85,8 @@ export default function Chatroom() {
             )
           })
         }
-
-
-
       </div>
+      <div className=' font-bold text-[#58bc82] border-b-2 border-white text-lg p-1 m-1 rounded-lg'>Group Chatroom</div>
     </div>
   )
 }

@@ -7,8 +7,9 @@ import { useDate } from '../Contextapi/DateContext'
 
 export default function Landingpage() {
     const {currdate , setCurrdate} = useDate()
-    console.log(currdate.getDay())
-    const day = currdate.getDay();
+    // console.log(currdate);
+    // console.log(currdate.getDay())
+    // const day = currdate.getDay();
     return (
         <div className='bg-[#05040460] h-fit min-h-[100vh] gradientbackground pl-4 pr-4 overflow-hidden'>
             <Navbar></Navbar>
@@ -16,7 +17,7 @@ export default function Landingpage() {
                 <Todolist ></Todolist>
                 <Calendar></Calendar>
             </div>
-            <ClassesAndSubjects day={day} ></ClassesAndSubjects>
+            <ClassesAndSubjects ></ClassesAndSubjects>
         </div>
     )
 }

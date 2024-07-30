@@ -12,11 +12,13 @@ export default function Classes(props) {
   const [refresh , Setrefresh] = useState(false);
 
   useEffect(() => {
-    const day = props.day;
-    const date = currdate.toString().substring(0, 15);
+    console.log(currdate)
+    const day = currdate ? currdate.getDay() : 0;
+    // let day = 2
+    const date = currdate ? currdate.toString().substring(0, 15) : "";
     console.log(date)
-    console.log(TimeTable, props.day - 1)
-    setClasses(TimeTable[props.day])
+    console.log(TimeTable, day - 1)
+    setClasses(TimeTable[day])
 
     async function fetchdata() {
       try {
@@ -43,6 +45,9 @@ export default function Classes(props) {
         if (data.classes) {
           setAttendece(data.classes)
         }
+        else{
+          setAttendece({})
+        }
       } catch (error) {
         console.log(error)
       }
@@ -50,7 +55,7 @@ export default function Classes(props) {
     fetchdata();
 
 
-  }, [refresh])
+  }, [refresh , currdate])
 
   async function onClickYes(index) {
     console.log("here" , index)
@@ -116,6 +121,7 @@ export default function Classes(props) {
   }
 
   console.log(attendence)
+  console.log(currdate)
   // console.log(attendence[1])
   return (
     <div className='w-[60%] max-md:w-full h-full p-3 text-white text-lg'>
